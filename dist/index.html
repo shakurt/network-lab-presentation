@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RESTful APIs in Network Device Management</title>
+  <script type="module" crossorigin src="/assets/index-BkV9ZSMs.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-Bp-hnpXC.css">
+</head>
+<body>
+  <!-- Ambient glowing background shapes -->
+  <div class="bg-decorations">
+    <div class="bg-circle bg-circle-1"></div>
+    <div class="bg-circle bg-circle-2"></div>
+  </div>
+
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- Slide 1: Title Slide -->
+      <section class="title-slide" data-transition="zoom">
+        <div class="slide-wrapper">
+          <h1>The Role of RESTful APIs in<br>Network Device Management</h1>
+          <div class="title-columns" style="display: flex; gap: 24px; max-width: 1000px; margin: 0 auto; width: 100%;">
+            <!-- Left Side: Summary -->
+            <div class="glass-card" style="flex: 1.2; text-align: left; display: flex; align-items: center;">
+              <p style="font-size: 0.42em; line-height: 1.6; color: #cbd5e1; margin: 0;">
+                Modern networks contain a large number of interconnected devices that require continuous
+                monitoring and management. RESTful APIs provide a standardized method for communication between
+                software applications and network equipment. They play a key role in automation, monitoring, and
+                efficient network operations. As networks continue to grow, APIs become increasingly important in
+                simplifying management tasks.
+              </p>
+            </div>
+            
+            <!-- Right Side: Info & GitHub -->
+            <div class="glass-card" style="flex: 0.8; text-align: left; display: flex; flex-direction: column; justify-content: space-between; gap: 16px;">
+              <div>
+                <div style="font-size: 0.35em; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: #38bdf8; margin-bottom: 4px;">Course</div>
+                <div style="font-size: 0.48em; font-weight: 700; color: #fff; margin-bottom: 12px;">Network Lab Course</div>
+                
+                <div style="font-size: 0.35em; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: #38bdf8; margin-bottom: 4px;">Student</div>
+                <div style="font-size: 0.48em; font-weight: 700; color: #fff;">Mohammad Shakur Tousian</div>
+              </div>
+              
+              <div style="border-top: 1px solid rgba(255, 255, 255, 0.08); padding-top: 12px; margin-top: auto;">
+                <div style="font-size: 0.32em; color: #94a3b8; margin-bottom: 6px;">Access the project source:</div>
+                <a href="https://github.com/shakurt/network-lab-presentation" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; font-size: 0.38em; color: #38bdf8; text-decoration: none; font-weight: 600;">
+                  <span style="font-size: 1.1em;">📦</span> github.com/shakurt/network-lab-presentation
+                </a>
+              </div>
+            </div>
+          </div>
+          <div style="font-size: 0.45em; margin-top: 40px; color: #64748b; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;">
+            Press Space or Arrow Keys to Begin
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 2: Introduction to Network Management -->
+      <section data-transition="slide-in fade-out">
+        <div class="slide-wrapper">
+          <h2>Introduction to Network Management</h2>
+          
+          <div class="grid-2x2">
+            <!-- Card 1 -->
+            <div class="glass-card grid-card">
+              <div class="icon">🖥️</div>
+              <div class="grid-card-content">
+                <h3>Monitoring</h3>
+                <p>Tracking device availability, performance, bandwidth consumption, and error rates in real-time.</p>
+              </div>
+            </div>
+            <!-- Card 2 -->
+            <div class="glass-card grid-card">
+              <div class="icon">⚙️</div>
+              <div class="grid-card-content">
+                <h3>Configuring</h3>
+                <p>Applying parameters, routing protocols, VLANs, and security policies on routers and switches.</p>
+              </div>
+            </div>
+            <!-- Card 3 -->
+            <div class="glass-card grid-card">
+              <div class="icon">🔧</div>
+              <div class="grid-card-content">
+                <h3>Maintaining</h3>
+                <p>Updating software/firmware, backing up configurations, and performing system checks.</p>
+              </div>
+            </div>
+            <!-- Card 4 -->
+            <div class="glass-card grid-card">
+              <div class="icon">🔍</div>
+              <div class="grid-card-content">
+                <h3>Troubleshooting</h3>
+                <p>Diagnosing connectivity issues, link drops, performance bottlenecks, and routing loops.</p>
+              </div>
+            </div>
+          </div>
+
+          <p class="caption-text">
+            Network management involves monitoring, configuring, maintaining, and troubleshooting
+            network devices. Administrators must ensure network availability, performance, and security. As
+            networks expand, efficient management solutions become essential. Modern approaches increasingly
+            rely on automation and programmability.
+          </p>
+        </div>
+      </section>
+
+      <!-- Slide 3: What is a RESTful API? -->
+      <section data-transition="convex">
+        <div class="slide-wrapper">
+          <h2>What is a RESTful API?</h2>
+
+          <div class="diagram-flow">
+            <div class="diagram-node active">
+              <div style="font-size: 1.5em; margin-bottom: 8px;">💻</div>
+              Client Application
+              <div style="font-size: 0.75em; color: #38bdf8; margin-top: 4px;">Scripts / UI</div>
+            </div>
+            
+            <div class="diagram-arrow">
+              <div>HTTP GET/POST</div>
+              <div class="arrow-line"></div>
+              <div>JSON Payload</div>
+            </div>
+
+            <div class="diagram-node gateway">
+              <div style="font-size: 1.5em; margin-bottom: 8px;">🛡️</div>
+              RESTful API
+              <div style="font-size: 0.75em; color: #a855f7; margin-top: 4px;">Standard Interface</div>
+            </div>
+
+            <div class="diagram-arrow">
+              <div>Apply Config</div>
+              <div class="arrow-line"></div>
+              <div>Device Response</div>
+            </div>
+
+            <div class="diagram-node device">
+              <div style="font-size: 1.5em; margin-bottom: 8px;">🔌</div>
+              Network Switch/Router
+              <div style="font-size: 0.75em; color: #10b981; margin-top: 4px;">Hardware Node</div>
+            </div>
+          </div>
+
+          <p class="caption-text">
+            RESTful API is an interface that enables communication between systems using web
+            technologies. It follows REST architectural principles and typically exchanges data in JSON format. REST
+            APIs are lightweight, scalable, and easy to integrate with different applications. They are widely used
+            across modern software and networking environments.
+          </p>
+        </div>
+      </section>
+
+      <!-- Slide 4: Core Principles of REST -->
+      <section data-transition="concave">
+        <div class="slide-wrapper">
+          <h2>Core Principles of REST</h2>
+
+          <div class="columns-3">
+            <div class="glass-card col-card">
+              <span class="icon">🔄</span>
+              <h3>Statelessness</h3>
+              <p>Every request from client to server must contain all the information needed to understand and process the request. No session context is stored on the server.</p>
+            </div>
+            <div class="glass-card col-card">
+              <span class="icon">🌐</span>
+              <h3>Client-Server</h3>
+              <p>A clean separation of concerns. The user interface / automation script (client) is completely decoupled from the data storage and network hardware (server).</p>
+            </div>
+            <div class="glass-card col-card">
+              <span class="icon">📍</span>
+              <h3>Resource-Based URIs</h3>
+              <p>Each resource (interfaces, routing tables, VLANs) is identified uniquely by its Uniform Resource Identifier (URI), providing uniform access pathways.</p>
+            </div>
+          </div>
+
+          <p class="caption-text">
+            REST is based on several architectural principles, including stateless communication, client-server
+            architecture, and resource-based interactions. Each resource is identified by a unique URI. These
+            principles make REST services scalable, reliable, and easy to maintain.
+          </p>
+        </div>
+      </section>
+
+      <!-- Slide 5: HTTP Methods in REST APIs -->
+      <section data-transition="zoom-in slide-out">
+        <div class="slide-wrapper">
+          <h2>HTTP Methods in REST APIs</h2>
+
+          <div class="http-methods-grid">
+            <!-- GET -->
+            <div class="glass-card method-card">
+              <div class="badge get">GET</div>
+              <div class="method-info">
+                <code>GET /api/v1/interfaces/eth0</code>
+                <p>Retrieves configuration details or current status of the interface.</p>
+              </div>
+            </div>
+            <!-- POST -->
+            <div class="glass-card method-card">
+              <div class="badge post">POST</div>
+              <div class="method-info">
+                <code>POST /api/v1/vlans</code>
+                <p>Creates a new configuration resource (e.g. provisioning VLAN 100).</p>
+              </div>
+            </div>
+            <!-- PUT -->
+            <div class="glass-card method-card">
+              <div class="badge put">PUT</div>
+              <div class="method-info">
+                <code>PUT /api/v1/routing-table</code>
+                <p>Updates or replaces an existing configuration setting completely.</p>
+              </div>
+            </div>
+            <!-- DELETE -->
+            <div class="glass-card method-card">
+              <div class="badge delete">DELETE</div>
+              <div class="method-info">
+                <code>DELETE /api/v1/vlans/100</code>
+                <p>Removes a resource from the device configuration.</p>
+              </div>
+            </div>
+          </div>
+
+          <p class="caption-text">
+            REST APIs use standard HTTP methods to perform operations on resources. GET retrieves data,
+            POST creates resources, PUT updates existing data, and DELETE removes resources. These methods
+            provide a simple and consistent communication model.
+          </p>
+        </div>
+      </section>
+
+      <!-- Slide 6: Challenges of Traditional Network Management -->
+      <section data-transition="slide">
+        <div class="slide-wrapper">
+          <h2>Challenges of Traditional Network Management</h2>
+
+          <div class="split-columns">
+            <div class="glass-card split-card warning-style">
+              <h3><span>⚠️</span> Traditional CLI / SNMP</h3>
+              <ul>
+                <li>Manual device-by-device configuration via Telnet / SSH</li>
+                <li>Device-specific commands (Cisco IOS, Junos, etc.)</li>
+                <li>High probability of human input error</li>
+                <li>Lacks scalability for modern complex topologies</li>
+              </ul>
+            </div>
+            <div class="glass-card split-card success-style">
+              <h3><span>✨</span> The Modern REST API Way</h3>
+              <ul>
+                <li>Automated configuration push across multiple nodes</li>
+                <li>Standard HTTP/JSON payload format</li>
+                <li>Safe preview, dry-runs, and structured validations</li>
+                <li>Scales efficiently with scripts and templates</li>
+              </ul>
+            </div>
+          </div>
+
+          <p class="caption-text">
+            Traditional network management often depends on manual configuration and device-specific
+            tools. This approach increases operational complexity and the likelihood of human error. Managing
+            large-scale networks can become time-consuming and inefficient without automation.
+          </p>
+        </div>
+      </section>
+
+      <!-- Slide 7: RESTful APIs for Network Automation -->
+      <section data-transition="fade">
+        <div class="slide-wrapper">
+          <h2>RESTful APIs for Network Automation</h2>
+
+          <div class="terminal-window">
+            <div class="terminal-header">
+              <div class="terminal-dot red"></div>
+              <div class="terminal-dot yellow"></div>
+              <div class="terminal-dot green"></div>
+              <span class="terminal-title">configure_interface.py</span>
+            </div>
+            <pre><code class="language-python">import requests
+
+router_url = "https://192.168.1.1/api/v1/interfaces/GigabitEthernet1"
+headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer token123"
+}
+payload = {
+    "enabled": True,
+    "description": "Uplink to Core Switch",
+    "ipv4": "10.0.0.1",
+    "subnet_mask": "255.255.255.252"
+}
+
+# Push configuration automatically using HTTP PUT
+response = requests.put(router_url, json=payload, headers=headers, verify=False)
+if response.status_code == 200:
+    print("Interface configured successfully via REST API!")</code></pre>
+          </div>
+
+          <p class="caption-text">
+            Automation is one of the most significant advantages of RESTful APIs. Repetitive administrative
+            tasks can be executed automatically through scripts and management platforms. This improves
+            efficiency, consistency, and deployment speed across network infrastructures.
+          </p>
+        </div>
+      </section>
+
+      <!-- Slide 8: Monitoring and Performance Management -->
+      <section data-transition="convex">
+        <div class="slide-wrapper">
+          <h2>Monitoring and Performance Management</h2>
+          
+          <div class="dashboard-grid">
+            <!-- Metric 1 -->
+            <div class="glass-card metric-card">
+              <h3>CPU Utilization</h3>
+              <div class="metric-value">24%</div>
+              <div style="font-size: 0.35em; color: #94a3b8;">4 Core ARM Processor</div>
+              <div class="metric-progress">
+                <div class="metric-fill" style="width: 24%;"></div>
+              </div>
+            </div>
+            <!-- Metric 2 -->
+            <div class="glass-card metric-card">
+              <h3>Active Memory</h3>
+              <div class="metric-value">4.2 GB</div>
+              <div style="font-size: 0.35em; color: #94a3b8;">Of 8.0 GB System RAM</div>
+              <div class="metric-progress">
+                <div class="metric-fill" style="width: 52.5%; background: linear-gradient(90deg, #38bdf8, #10b981);"></div>
+              </div>
+            </div>
+            <!-- Metric 3 -->
+            <div class="glass-card metric-card">
+              <h3>Bandwidth Speed</h3>
+              <div class="metric-value">1.2 Gbps</div>
+              <div style="font-size: 0.35em; color: #94a3b8;">Port GigabitEthernet0/1</div>
+              <div class="metric-progress">
+                <div class="metric-fill" style="width: 75%; background: linear-gradient(90deg, #38bdf8, #f59e0b);"></div>
+              </div>
+            </div>
+          </div>
+
+          <p class="caption-text">
+            RESTful APIs provide direct access to operational and performance data. Administrators can
+            collect information about device health, traffic utilization, interface status, and system performance.
+            Real-time monitoring improves visibility and decision-making.
+          </p>
+        </div>
+      </section>
+
+      <!-- Slide 9: Integration with Network Management Platforms -->
+      <section data-transition="slide-in fade-out">
+        <div class="slide-wrapper">
+          <h2>Integration with Network Management Platforms</h2>
+
+          <div class="hub-wrapper">
+            <div class="hub-nodes-container">
+              <!-- Left Side -->
+              <div class="hub-side" style="align-items: flex-end;">
+                <div class="hub-node">📊 Monitoring (Grafana / Prometheus)</div>
+                <div class="hub-node">☁️ Cloud Hubs (AWS / Azure)</div>
+              </div>
+              
+              <!-- Center Hub -->
+              <div class="hub-center">
+                <div style="font-size: 1.5em; margin-bottom: 2px;">🔌</div>
+                REST API<br>Gateway
+              </div>
+
+              <!-- Right Side -->
+              <div class="hub-side" style="align-items: flex-start;">
+                <div class="hub-node">⚙️ Automation (Ansible / Terraform)</div>
+                <div class="hub-node">🤖 Alert Systems (Webhooks / Slack)</div>
+              </div>
+            </div>
+          </div>
+
+          <p class="caption-text">
+            RESTful APIs facilitate communication between network devices and management platforms.
+            Monitoring tools, cloud services, and automation frameworks can exchange information through
+            standardized interfaces. This improves interoperability between systems.
+          </p>
+        </div>
+      </section>
+
+      <!-- Slide 10: Security in RESTful APIs -->
+      <section data-transition="zoom">
+        <div class="slide-wrapper">
+          <h2>Security in RESTful APIs</h2>
+
+          <div class="security-row">
+            <div class="glass-card security-card">
+              <span style="font-size: 1.8em;">🔑</span>
+              <h3>Authentication</h3>
+              <p>Ensuring identity using secure tokens (OAuth2, API keys, JWT) rather than transmitting plaintext passwords.</p>
+              <div class="security-indicator">
+                <span class="status-dot" style="width: 6px; height: 6px; border-radius: 50%; background: #10b981; display: inline-block; box-shadow: 0 0 6px #10b981;"></span>
+                Active Tokens
+              </div>
+            </div>
+            
+            <div class="glass-card security-card">
+              <span style="font-size: 1.8em;">🛡️</span>
+              <h3>Authorization</h3>
+              <p>Applying Role-Based Access Control (RBAC) to limit operations. An operator may GET data but not DELETE configs.</p>
+              <div class="security-indicator" style="color: #3b82f6; background: rgba(59, 130, 246, 0.1); border-color: rgba(59, 130, 246, 0.2);">
+                <span class="status-dot" style="width: 6px; height: 6px; border-radius: 50%; background: #3b82f6; display: inline-block; box-shadow: 0 0 6px #3b82f6;"></span>
+                RBAC Scopes
+              </div>
+            </div>
+
+            <div class="glass-card security-card">
+              <span style="font-size: 1.8em;">🔒</span>
+              <h3>Encryption</h3>
+              <p>Encrypting API payloads in transit via HTTPS / TLS 1.3 to block eavesdropping or middleman packet alterations.</p>
+              <div class="security-indicator" style="color: #a855f7; background: rgba(168, 85, 247, 0.1); border-color: rgba(168, 85, 247, 0.2);">
+                <span class="status-dot" style="width: 6px; height: 6px; border-radius: 50%; background: #a855f7; display: inline-block; box-shadow: 0 0 6px #a855f7;"></span>
+                TLS 1.3 Secure
+              </div>
+            </div>
+          </div>
+
+          <p class="caption-text">
+            Security is essential when exposing network functions through APIs. Authentication,
+            authorization, encryption, and secure communication protocols help protect devices and sensitive
+            information. Strong security measures reduce operational risks.
+          </p>
+        </div>
+      </section>
+
+      <!-- Slide 11: Real-World Vendor Implementations -->
+      <section data-transition="convex">
+        <div class="slide-wrapper">
+          <h2>Real-World Vendor Implementations</h2>
+
+          <div class="vendor-grid">
+            <div class="glass-card vendor-card">
+              <div class="vendor-tag">Cisco Systems</div>
+              <h3>IOS-XE / Nexus OS</h3>
+              <p>Supports RESTCONF and native REST APIs, allowing complete device management and streaming telemetry integration.</p>
+            </div>
+            
+            <div class="glass-card vendor-card">
+              <div class="vendor-tag">Juniper Networks</div>
+              <h3>Junos OS API</h3>
+              <p>Exposes XML and JSON endpoints to configure interfaces, pull telemetry, and run SLA tests remotely.</p>
+            </div>
+
+            <div class="glass-card vendor-card">
+              <div class="vendor-tag">Arista Networks</div>
+              <h3>EOS eAPI</h3>
+              <p>Uses JSON-RPC format over HTTP/S, allowing standard commands to return structured JSON data directly.</p>
+            </div>
+          </div>
+
+          <p class="caption-text">
+            Many networking vendors provide RESTful APIs within their products. These APIs support
+            configuration management, monitoring, and automation. Organizations use them to simplify network
+            operations and reduce manual workloads.
+          </p>
+        </div>
+      </section>
+
+      <!-- Slide 12: Advantages and Limitations -->
+      <section data-transition="concave">
+        <div class="slide-wrapper">
+          <h2>Advantages and Limitations</h2>
+
+          <div class="split-columns">
+            <div class="glass-card split-card success-style">
+              <h3><span>🟢</span> Key Advantages</h3>
+              <ul>
+                <li>Simplicity: Uses standard HTTP and easy-to-read JSON</li>
+                <li>Scalability: Light overhead and highly scalable designs</li>
+                <li>Decoupling: Clients are decoupled from network OS</li>
+                <li>Interoperability: Integrates with any modern language</li>
+              </ul>
+            </div>
+            <div class="glass-card split-card warning-style" style="border-color: rgba(245, 158, 11, 0.2);">
+              <h3 style="color: #fbbf24 !important;"><span>🟡</span> Notable Limitations</h3>
+              <ul>
+                <li>Security Overhead: Requires heavy TLS and token rotation</li>
+                <li>Network Latency: HTTP request parsing takes CPU cycles</li>
+                <li>API Management: Hard to manage endpoint versions</li>
+                <li>State Tracking: Restoring states after failure is complex</li>
+              </ul>
+            </div>
+          </div>
+
+          <p class="caption-text">
+            RESTful APIs provide simplicity, flexibility, scalability, and easy integration. However, they also
+            require proper security controls and API management strategies. Understanding both benefits and
+            limitations is necessary for successful implementation.
+          </p>
+        </div>
+      </section>
+
+      <!-- Slide 13: Future Trends in Network Management -->
+      <section data-transition="zoom-in slide-out">
+        <div class="slide-wrapper">
+          <h2>Future Trends in Network Management</h2>
+
+          <div class="future-grid">
+            <div class="glass-card future-card">
+              <span class="icon">🧠</span>
+              <h3>Intent-Based Networking</h3>
+              <p>Translating business goals into router policies automatically via intent APIs.</p>
+            </div>
+            
+            <div class="glass-card future-card">
+              <span class="icon">🌐</span>
+              <h3>Software-Defined (SDN)</h3>
+              <p>Using centralized controllers to manipulate switches globally via north-bound REST endpoints.</p>
+            </div>
+
+            <div class="glass-card future-card">
+              <span class="icon">🤖</span>
+              <h3>AI-Driven Operations</h3>
+              <p>Leveraging machine learning models that read network data through telemetry streams and APIs.</p>
+            </div>
+          </div>
+
+          <p class="caption-text">
+            Future networking technologies increasingly depend on programmability and automation.
+            RESTful APIs are expected to remain fundamental components of software-defined networking, cloud
+            environments, and intelligent network infrastructures.
+          </p>
+        </div>
+      </section>
+
+      <!-- Slide 14: Conclusion -->
+      <section data-transition="fade" data-background-transition="zoom">
+        <div class="slide-wrapper">
+          <h2>Conclusion</h2>
+
+          <div class="glass-card conclusion-box">
+            <p>
+              RESTful APIs have fundamentally transformed how modern network infrastructures are built, maintained, and operated. 
+              By introducing web-based standardization to switches and routers, APIs have bridged the gap between traditional network management and software-defined automation.
+            </p>
+            
+            <div class="conclusion-tags">
+              <span class="conclusion-tag">Standardization</span>
+              <span class="conclusion-tag">Automation</span>
+              <span class="conclusion-tag">Real-Time Telemetry</span>
+            </div>
+          </div>
+
+          <p class="caption-text">
+            RESTful APIs have transformed network device management by enabling standardized
+            communication, automation, monitoring, and integration. They help organizations manage complex
+            infrastructures more efficiently while supporting the future evolution of networking technologies.
+          </p>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+</body>
+</html>
